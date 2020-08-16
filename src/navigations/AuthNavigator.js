@@ -1,6 +1,6 @@
 //Module Imports
 import React, { Component } from 'react';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, StyleSheet, View } from 'react-native';
 
 //File Imports
 import AuthNavigation from './AuthNavigation';
@@ -22,12 +22,18 @@ class AuthNavigator extends Component {
   }
   
   render() {
-    if (this.state.user) {
-      return <AppNavigation />
-    } else {
-      return <AuthNavigation />
-    }
+    return (
+      <React.Fragment>
+        {this.state.user ? <AppNavigation /> :  <AuthNavigation />}
+      </React.Fragment>
+    )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 18
+  }
+});
 
 export default AuthNavigator;

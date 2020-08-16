@@ -1,10 +1,11 @@
 //Module Imports
 import * as React from 'react';
-import { NavigationContainer, TabActions } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator, HeaderBackButton } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from 'react-native-paper';
+import { Platform, StatusBar } from 'react-native';
 
 //File Imports
 import Home from '../components/screens/Home';
@@ -16,40 +17,119 @@ const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
 
 const HomeScreen = () => {
+  const { colors } = useTheme();
   return (
-    <NavigationContainer independent={true}>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
+    <NavigationContainer
+      independent={true}
+    >
+      <Stack.Navigator
+        initialRouteName={"Home"}
+        options={{
+          style: {
+            paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight
+          }
+        }}
+      >
+        <Stack.Screen 
+          name="Home" 
+          component={Home} 
+          options={{
+            headerTintColor: '#fff',
+            headerStyle: {
+              backgroundColor: colors.primary,
+            },
+            //Useful for other screen
+            // headerLeft: (props) => {
+            //   return <HeaderBackButton 
+            //     { ...props }
+            //     onPress={() => console.log('back')}
+            //   />
+            // },
+          }}
+          />
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
 
 const CategoriesScreen = () => {
+  const { colors } = useTheme();
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator>
-        <Stack.Screen name="Categories" component={Categories} />
+        <Stack.Screen
+          name="Categories"
+          component={Categories}
+          options={{
+            headerTintColor: '#fff',
+            headerStyle: {
+              backgroundColor: colors.primary,
+            },
+            //Useful for other screen
+            // headerLeft: (props) => {
+            //   return <HeaderBackButton 
+            //     { ...props }
+            //     onPress={() => console.log('back')}
+            //   />
+            // },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
 
 const NotificationScreen = () => {
+  const { colors } = useTheme();
   return (
   <NavigationContainer independent={true}>
     <Stack.Navigator>
-      <Stack.Screen name="Notification" component={Notification} />
+      <Stack.Screen
+        name="Notification"
+        component={Notification}
+        options={{
+          headerTintColor: '#fff',
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          //Useful for other screen
+          // headerLeft: (props) => {
+          //   return <HeaderBackButton 
+          //     { ...props }
+          //     onPress={() => console.log('back')}
+          //   />
+          // },
+        }}
+      />
     </Stack.Navigator>
   </NavigationContainer>
 )
 }
 
 const ProfileScreen = () => {
+  const { colors } = useTheme();
   return (
-  <NavigationContainer independent={true}>
+  <NavigationContainer
+    independent={true}
+  >
     <Stack.Navigator>
-      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          headerTintColor: '#fff',
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          //Useful for other screen
+          // headerLeft: (props) => {
+          //   return <HeaderBackButton 
+          //     { ...props }
+          //     onPress={() => console.log('back')}
+          //   />
+          // },
+        }}
+      />
     </Stack.Navigator>
   </NavigationContainer>
 )
