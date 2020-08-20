@@ -39,12 +39,7 @@ const HomeScreen = () => {
               backgroundColor: colors.primary,
             },
             //Useful for other screen
-            // headerLeft: (props) => {
-            //   return <HeaderBackButton 
-            //     { ...props }
-            //     onPress={() => console.log('back')}
-            //   />
-            // },
+            headerTitleAlign: 'center'
           }}
           />
       </Stack.Navigator>
@@ -65,6 +60,7 @@ const CategoriesScreen = () => {
             headerStyle: {
               backgroundColor: colors.primary,
             },
+            headerTitleAlign: 'center'
             //Useful for other screen
             // headerLeft: (props) => {
             //   return <HeaderBackButton 
@@ -92,6 +88,7 @@ const NotificationScreen = () => {
           headerStyle: {
             backgroundColor: colors.primary,
           },
+          headerTitleAlign: 'center'
           //Useful for other screen
           // headerLeft: (props) => {
           //   return <HeaderBackButton 
@@ -121,6 +118,7 @@ const ProfileScreen = () => {
           headerStyle: {
             backgroundColor: colors.primary,
           },
+          headerTitleAlign: 'center'
           //Useful for other screen
           // headerLeft: (props) => {
           //   return <HeaderBackButton 

@@ -1,10 +1,11 @@
 //Module Import
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 
 //File Import
 import { styleRules } from './styles';
 import ImageCarousel from '../common/ImageCarousel';
+import CustomCard from '../common/CustomCard';
 
 //default consts
 const OFFER_ONE = require('../../../../assets/offer_1.png');
@@ -55,7 +56,17 @@ class Home extends Component {
           carouselImages={carouselImages}
         />
         <View style={{ marginTop: 15 }}>
-          <Text>Home</Text>
+          <CustomCard 
+            offerArray={carouselImages}
+            title={`Today's offer`}
+          />
+        </View>
+
+        <View style={{ marginTop: 15 }}>
+          <CustomCard 
+            offerArray={carouselImages}
+            title={`Exclusive offer`}
+          />
         </View>
       </View>
     )
