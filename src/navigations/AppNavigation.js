@@ -1,6 +1,6 @@
 //Module Imports
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator, HeaderBackButton } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -11,7 +11,8 @@ import { Platform, StatusBar } from 'react-native';
 import Home from '../components/screens/Home';
 import Profile from '../components/screens/Profile';
 import Notification from '../components/screens/Notification';
-import Categories from '../components/screens/Categories';
+import CategoryNavigation from './CategoryNavigation';
+import OfferCards from '../components/screens/common/OfferCards/';
 
 const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -49,12 +50,13 @@ const HomeScreen = () => {
 
 const CategoriesScreen = () => {
   const { colors } = useTheme();
+  const navigation = useNavigation(); 
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator>
         <Stack.Screen
           name="Categories"
-          component={Categories}
+          component={CategoryNavigation}
           options={{
             headerTintColor: '#fff',
             headerStyle: {
@@ -69,6 +71,25 @@ const CategoriesScreen = () => {
             //   />
             // },
           }}
+        />
+        <Stack.Screen 
+        name="Offers"
+        component={OfferCards}
+        options={{
+          headerTintColor: '#fff',
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          headerTitleAlign: 'center',
+          //Useful for other screen
+          headerLeft: (props) => {
+            return <HeaderBackButton 
+              { ...props }
+              onPress={() => navigation.popToTop()}
+            />
+          },
+        }}
+        
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -175,7 +196,7 @@ const AppNavigation = () => {
             tabBarBadge: 3,
           }}
         />
-        <BottomTab.Screen
+        {/* <BottomTab.Screen
           name="profile"
           component={ProfileScreen}
           options={{
@@ -184,7 +205,7 @@ const AppNavigation = () => {
               <MaterialCommunityIcons name="account" color={color} size={size} />
             ),
           }}
-        />
+        /> */}
       </BottomTab.Navigator>
     </NavigationContainer>
   )
