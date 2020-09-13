@@ -26,7 +26,7 @@ class CustomCard extends Component {
                   //   </View>
                   //   <Text>Offer {obj.index}</Text>
                   // </View>
-                  <View>
+                  <View key={index}>
                     <Image 
                       source={obj.path}
                       style={{ width: 70, height: 70, margin: 5, borderRadius: 5 }}
